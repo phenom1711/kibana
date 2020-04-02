@@ -86,7 +86,8 @@ def downloadCoverageArtifacts() {
   def storageLocation = "gs://kibana-ci-artifacts/jobs/${env.JOB_NAME}/${BUILD_NUMBER}/coverage/"
   def targetLocation = "/tmp/downloaded_coverage"
 
-  sh "mkdir -p '${targetLocation}' && gsutil -m cp -r '${storageLocation}' '${targetLocation}'"
+  sh "mkdir -p '${targetLocation}'"
+  sh "gsutil -m cp -r '${storageLocation}' '${targetLocation}' || echo '### downloadCoverageArtifacts() failed!'"
 }
 
 def uploadCoverageArtifacts(prefix, pattern) {
