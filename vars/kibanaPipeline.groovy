@@ -87,7 +87,7 @@ def downloadCoverageArtifacts() {
   def targetLocation = "/tmp/downloaded_coverage"
 
   sh "mkdir -p '${targetLocation}'"
-  sh "gsutil -m cp -r '${storageLocation}' '${targetLocation}' || echo '### downloadCoverageArtifacts() failed!'"
+  sh "gsutil -m cp -r '${storageLocation}' '${targetLocation}' || echo '### downloadCoverageArtifacts() failed, for one or more artifacts!'"
 }
 
 def uploadCoverageArtifacts(prefix, pattern) {
